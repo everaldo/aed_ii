@@ -50,3 +50,17 @@ class Edge:
         return hash(self.label)
 
 
+    def __iter__(self):
+        self.i = -1
+        self.tam = len(self.e)
+        return self
+
+    def __next__(self):
+        self.i = self.i + 1
+        if self.i == self.tam:
+            raise StopIteration
+        return self.e[i]
+
+
+    def __contains__(self, v):
+        return self.incide(v)

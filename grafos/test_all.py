@@ -8,6 +8,7 @@
 import unittest
 
 from test_vertex import TestVertex
+from test_vertices import TestVertices
 from test_edge import TestEdge
 from test_neighborhood import TestNeighborhood
 from test_neighbors import TestNeighbors

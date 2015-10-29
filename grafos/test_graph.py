@@ -10,6 +10,8 @@ import unittest
 from vertex import Vertex
 from edge import Edge
 from graph import Graph
+from edges import Edges
+from vertices import Vertices
 
 class TestGraph(unittest.TestCase):
 
@@ -23,8 +25,9 @@ class TestGraph(unittest.TestCase):
         self.e2 = Edge(self.a, self.d)
         self.e3 = Edge(self.c, self.d)
         self.e4 = Edge(self.b, self.d)
-        self.edges = {self.e1, self.e2, self.e3, self.e4}
-        self.g = Graph({self.a, self.b, self.c, self.d}, self.edges)
+        self.edges = Edges({self.e1, self.e2, self.e3, self.e4})
+        self.vertices = Vertices({self.a, self.b, self.c, self.d})
+        self.g = Graph(self.vertices, self.edges)
 
     def test_adjacency_list(self):
         self.assertEqual(self.g.adjacency, \
@@ -32,6 +35,24 @@ class TestGraph(unittest.TestCase):
              self.b: {self.a, self.d},
              self.c: {self.d},
              self.d: {self.a, self.b, self.c}})
+
+    def test_incidence_matrix(self):
+        self.g.incidence_matrix()
+        m = self.g.i_matrix
+        for edge in self.g.edges:
+            u, v = edge.e
+            self.assertTrue(m.adjacent(u, v))
+
+    def test_min_degree(self):
+        self.assertEqual(self.g.min_degree(), 1)
+
+    def test_max_degree(self):
+        self.assertEqual(self.g.max_degree(), 3)
+
+
+    def test_complement_graph(self):
+        c = self.g.complement()
+        self.assertEqual(c.vertices, self.g.vertices)
 
 
 
