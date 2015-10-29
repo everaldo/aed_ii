@@ -8,7 +8,6 @@ from neighbors import Neighbors
 from incidence_matrix import IncidenceMatrix
 from vertices import Vertices
 from edges import Edges
-from kgraph import *
 
 class Graph:
 
@@ -76,3 +75,12 @@ class Graph:
 
     def __str__(self):
         return(str(self.adjacency))
+
+
+class KGraph:
+
+    @classmethod
+    def create(cls, vertices = Vertices()):
+        edges = Edges.create(vertices)
+        return Graph(vertices, edges)
+

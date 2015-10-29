@@ -16,12 +16,18 @@ class Vertices:
     def order(self):
         return len(self.vertices)
 
+    def __len__(self):
+        return self.order()
 
     def valid_edge(self, edge):
         for v_i in edge:
             if v_i not in self:
                 return False
         return True
+
+    def isdisjoint(self, other):
+        return set(self.vertices).isdisjoint(set(other.vertices))
+
 
 
     def __iter__(self):

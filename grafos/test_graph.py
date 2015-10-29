@@ -9,7 +9,7 @@ import unittest
 
 from vertex import Vertex
 from edge import Edge
-from graph import Graph
+from graph import Graph, KGraph
 from edges import Edges
 from vertices import Vertices
 
@@ -28,13 +28,14 @@ class TestGraph(unittest.TestCase):
         self.edges = Edges({self.e1, self.e2, self.e3, self.e4})
         self.vertices = Vertices({self.a, self.b, self.c, self.d})
         self.g = Graph(self.vertices, self.edges)
-
+        self.kgraph = KGraph.create(self.vertices)
+ 
     def test_adjacency_list(self):
         self.assertEqual(self.g.adjacency, \
-            {self.a: {self.b, self.d},
-             self.b: {self.a, self.d},
-             self.c: {self.d},
-             self.d: {self.a, self.b, self.c}})
+            {self.a: Vertices({self.b, self.d}),
+             self.b: Vertices({self.a, self.d}),
+             self.c: Vertices({self.d}),
+             self.d: Vertices({self.a, self.b, self.c})})
 
     def test_incidence_matrix(self):
         self.g.incidence_matrix()
@@ -53,6 +54,22 @@ class TestGraph(unittest.TestCase):
     def test_complement_graph(self):
         c = self.g.complement()
         self.assertEqual(c.vertices, self.g.vertices)
+
+    def test_min_degree_kgraph(self):
+        self.assertEqual(self.kgraph.min_degree(), 3)
+
+    def test_max_degree_kgraph(self):
+        self.assertEqual(self.kgraph.max_degree(), 3)
+
+
+    def test_incidence_matrix_kgraph(self):
+        """A matriz de incidência de um Grafo completo contém 0s somente na diagonal"""
+        self.kgraph.incidence_matrix()
+        self.assertEqual(self.kgraph.i_matrix.matrix, \
+            [[0, 1, 1, 1], \
+             [1, 0, 1, 1], \
+             [1, 1, 0, 1], \
+             [1, 1, 1, 0]])
 
 
 

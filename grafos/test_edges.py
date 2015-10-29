@@ -86,5 +86,9 @@ class TestEdges(unittest.TestCase):
             es.add(e)
         self.assertEqual(Edges(es), self.edges)
 
+    def test_isdisjoint(self):
+        """Dois conjuntos distintos de arestas são disjuntos"""
+        self.assertTrue(self.edges.isdisjoint(Edges({Edge(Vertex(), Vertex())})))
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

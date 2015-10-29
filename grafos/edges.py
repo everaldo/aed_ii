@@ -43,6 +43,9 @@ class Edges:
         return Edges(es1 - es2)
 
 
+    def isdisjoint(self, other):
+        return set(self.edges).isdisjoint(set(other.edges))
+
     @classmethod
     def create(cls, vertices):
         edges_set = set()

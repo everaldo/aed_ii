@@ -61,6 +61,10 @@ class TestVertices(unittest.TestCase):
         self.assertTrue(vigual <= self.vertices)
         self.assertFalse(vs3 <= self.vertices)
  
+    def test_isdisjoint(self):
+        """Dois conjuntos distintos de vertices são disjuntos"""
+        self.assertTrue(self.vertices.isdisjoint(Vertices({Vertex(), Vertex()})))
+
 
     def test_iterator(self):
         """É possível iterar sobre o conjunto de vértices"""
