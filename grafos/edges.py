@@ -33,6 +33,9 @@ class Edges:
             raise StopIteration
         return self.edges[self.i]
 
+    def __eq__(self, other):
+        return set(self.edges) == set(other.edges)
+
 
     def __sub__(self, other):
         es1 = set(self.edges)
@@ -50,4 +53,4 @@ class Edges:
 
     # Para utilizar o operador <=, representando subconjunto
     def __le__(self, other):
-        return set(self.vertices) <= set(other.vertices)
+        return set(self.edges) <= set(other.edges)

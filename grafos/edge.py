@@ -28,6 +28,11 @@ class Edge:
     def incide(self, v):
         return v in self.e
 
+    # permite usar o operador in e not in para verificar
+    # se um vértice incide numa aresta
+    def __contains__(self, v):
+        return self.incide(v)
+
     def adjacent(self, v):
         if not v in self.e:
             raise Exception("Erro: {v} não pertence a {e}".format(v=v, e=self.e))
@@ -59,8 +64,7 @@ class Edge:
         self.i = self.i + 1
         if self.i == self.tam:
             raise StopIteration
-        return self.e[i]
+        return self.e[self.i]
 
 
-    def __contains__(self, v):
-        return self.incide(v)
+

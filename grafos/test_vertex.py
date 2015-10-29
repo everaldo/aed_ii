@@ -21,13 +21,17 @@ class TestVertex(unittest.TestCase):
 
 
     def test_a_vertex_has_auto_label(self):
+        """Um vértice é numerado automaticamente
+            caso não seja fornecido um label"""
         self.assertNotEqual(self.v1, self.v2)
 
     def test_a_vertex_can_receive_a_label(self):
+        """Um vértice pode receber um label"""
         self.assertEqual(str(self.x), "x")
         self.assertEqual(str(self.another_x), "x")
 
     def test_two_vertices_with_same_label_are_equal(self):
+        """Dois vértices com o mesmo label são considerados iguais"""
         self.assertEqual(self.x, self.another_x)
 
 if __name__ == '__main__':
