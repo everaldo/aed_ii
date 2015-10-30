@@ -12,7 +12,7 @@ from edges import Edges
 class Graph:
 
 
-    def __init__(self, vertices = Vertices, edges = Edges()):
+    def __init__(self, vertices = Vertices(), edges = Edges()):
         self.vertices = vertices
         self.edges = edges
 
