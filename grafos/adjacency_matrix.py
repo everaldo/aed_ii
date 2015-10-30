@@ -7,13 +7,13 @@
 # https://docs.python.org/3/library/array.html
 
 
-class IncidenceMatrix:
+class AdjacencyMatrix:
 
 
 
     def __init__(self, graph):
         self.create_vertices_map(graph.vertices)
-        self.matrix = self.create_incidence_matrix(graph)
+        self.matrix = self.create_adjacency_matrix(graph)
 
 
     def create_vertices_map(self, vertices):
@@ -28,7 +28,7 @@ class IncidenceMatrix:
     def adjacent(self, u, v):
         return self.matrix[self.v_map[u]][self.v_map[v]]
 
-    def create_incidence_matrix(self, graph):
+    def create_adjacency_matrix(self, graph):
         matrix = []
         for index, vertice in self.i_map.items():
             matrix.append([])

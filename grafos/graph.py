@@ -5,7 +5,7 @@
 #
 
 from neighbors import Neighbors
-from incidence_matrix import IncidenceMatrix
+from adjacency_matrix import AdjacencyMatrix
 from vertices import Vertices
 from edges import Edges
 
@@ -21,8 +21,8 @@ class Graph:
             self.adjacency[v] = Neighbors.get(v, edges)
 
 
-    def incidence_matrix(self):
-        self.i_matrix = IncidenceMatrix(self)
+    def adjacency_matrix(self):
+        self.i_matrix = AdjacencyMatrix(self)
         return self.i_matrix
 
     def degree(self, v):

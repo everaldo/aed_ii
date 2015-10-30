@@ -37,8 +37,8 @@ class TestGraph(unittest.TestCase):
              self.c: Vertices({self.d}),
              self.d: Vertices({self.a, self.b, self.c})})
 
-    def test_incidence_matrix(self):
-        self.g.incidence_matrix()
+    def test_adjacency_matrix(self):
+        self.g.adjacency_matrix()
         m = self.g.i_matrix
         for edge in self.g.edges:
             u, v = edge.e
@@ -62,9 +62,9 @@ class TestGraph(unittest.TestCase):
         self.assertEqual(self.kgraph.max_degree(), 3)
 
 
-    def test_incidence_matrix_kgraph(self):
-        """A matriz de incidência de um Grafo completo contém 0s somente na diagonal"""
-        self.kgraph.incidence_matrix()
+    def test_adjacency_matrix_kgraph(self):
+        """A matriz de adjacência de um Grafo completo contém 0s somente na diagonal"""
+        self.kgraph.adjacency_matrix()
         self.assertEqual(self.kgraph.i_matrix.matrix, \
             [[0, 1, 1, 1], \
              [1, 0, 1, 1], \
